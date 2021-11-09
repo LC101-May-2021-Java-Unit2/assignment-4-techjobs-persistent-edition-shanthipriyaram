@@ -17,7 +17,7 @@ import java.util.HashMap;
 @Controller
 @RequestMapping(value = "list")
 public class ListController {
-//test
+
     @Autowired
     private JobRepository jobRepository;
 
