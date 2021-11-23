@@ -22,8 +22,8 @@ public class EmployerController {
     @Autowired
     private JobRepository jobRepository;
 
-    @GetMapping
-    public String displayAllEmployers(Model model) {
+    @RequestMapping("")
+    public String index(Model model) {
         model.addAttribute("title", "All Employers");
         model.addAttribute("employers", employerRepository.findAll());
         return "employers/index";
@@ -56,6 +56,7 @@ public class EmployerController {
         Optional optEmployer = employerRepository.findById(employerId);
         if (optEmployer.isPresent()) {
             Employer employer = (Employer) optEmployer.get();
+            model.addAttribute("title", "Employer: " + ((Employer) optEmployer.get()).getId());
             model.addAttribute("employer", employer);
             return "employers/view";
         } else {
